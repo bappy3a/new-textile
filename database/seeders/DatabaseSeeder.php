@@ -27,5 +27,7 @@ class DatabaseSeeder extends Seeder
             $user->email_verified_at = now();
             $user->save();
         }
+
+        $this->call([SliderSeeder::class, HeroInfoSeeder::class, AboutUsSeeder::class, ServiceSeeder::class, GallerySeeder::class, WhyChooseSeeder::class]);
     }
 }

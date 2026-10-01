@@ -2,6 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\AboutUs;
+use App\Models\GalleryImage;
+use App\Models\GallerySection;
+use App\Models\HeroInfo;
+use App\Models\Service;
+use App\Models\ServiceSection;
+use App\Models\Slider;
+use App\Models\WhyChooseItem;
+use App\Models\WhyChooseSection;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -14,6 +23,16 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('index');
+        $sliders = Slider::active()->get();
+        $heroInfo = HeroInfo::first();
+        $about = AboutUs::first();
+        $services = Service::active()->get();
+        $serviceSection = ServiceSection::first();
+        $galleryImages = GalleryImage::active()->get();
+        $gallerySection = GallerySection::first();
+        $whyChoose = WhyChooseSection::first();
+        $whyChooseItems = WhyChooseItem::active()->get();
+
+        return view('index', compact('sliders', 'heroInfo', 'about', 'services', 'serviceSection', 'galleryImages', 'gallerySection', 'whyChoose', 'whyChooseItems'));
     }
 }
