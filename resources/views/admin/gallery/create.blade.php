@@ -24,6 +24,10 @@
                                 <input type="checkbox" class="custom-control-input" id="is_active" name="is_active" value="1" checked>
                                 <label class="custom-control-label" for="is_active">Active</label>
                             </div>
+                            <div class="custom-control custom-switch ms-4">
+                                <input type="checkbox" class="custom-control-input" id="show_on_home" name="show_on_home" value="1" @checked(old('show_on_home'))>
+                                <label class="custom-control-label" for="show_on_home">Show on Home Page</label>
+                            </div>
                         </div>
                         <div class="col-12">
                             <button type="submit" class="btn btn-primary">Upload</button>

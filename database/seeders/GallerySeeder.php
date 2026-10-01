@@ -20,7 +20,7 @@ class GallerySeeder extends Seeder
         foreach (range(1, 9) as $n) {
             GalleryImage::updateOrCreate(
                 ['image' => "frontend/images/gallery-{$n}.jpg"],
-                ['alt_text' => "Gallery image {$n}", 'sort_order' => $n, 'is_active' => true],
+                ['alt_text' => "Gallery image {$n}", 'sort_order' => $n, 'is_active' => true, 'show_on_home' => true],
             );
         }
     }

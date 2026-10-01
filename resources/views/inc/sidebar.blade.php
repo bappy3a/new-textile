@@ -4,7 +4,6 @@
         ['label' => 'Hero Info', 'route' => 'hero-info.edit', 'active' => ['hero-info.edit']],
         ['label' => 'About Us', 'route' => 'about-us.edit', 'active' => ['about-us.edit']],
         ['label' => 'Services', 'route' => 'services.index', 'active' => ['services.index', 'services.create', 'services.edit', 'services.section.edit']],
-        ['label' => 'Gallery', 'route' => 'gallery.index', 'active' => ['gallery.index', 'gallery.create', 'gallery.edit']],
         ['label' => 'Why Choose Us', 'route' => 'why-choose.index', 'active' => ['why-choose.index', 'why-choose.create', 'why-choose.edit', 'why-choose.section.edit']],
     ];
     $homeRoutes = collect($homeMenus)->pluck('active')->flatten()->all();
@@ -30,5 +29,17 @@
                 </li>
             @endforeach
         </ul>
+    </li>
+    <li class="nk-menu-item {{ areActiveRoutes(['about-page.index', 'about-page.items.create', 'about-page.items.edit']) }}">
+        <a href="{{ route('about-page.index') }}" class="nk-menu-link">
+            <span class="nk-menu-icon"><em class="icon ni ni-info-fill"></em></span>
+            <span class="nk-menu-text">About Us Page</span>
+        </a>
+    </li>
+    <li class="nk-menu-item {{ areActiveRoutes(['gallery.index', 'gallery.create', 'gallery.edit']) }}">
+        <a href="{{ route('gallery.index') }}" class="nk-menu-link">
+            <span class="nk-menu-icon"><em class="icon ni ni-img-fill"></em></span>
+            <span class="nk-menu-text">Products Gallery</span>
+        </a>
     </li>
 </ul><!-- .nk-menu -->

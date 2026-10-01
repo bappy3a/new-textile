@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\AboutPageItemController;
+use App\Http\Controllers\AboutPageSectionController;
 use App\Http\Controllers\AboutUsController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\GalleryController;
@@ -25,3 +27,7 @@ Route::resource('gallery', GalleryController::class)->except('show');
 Route::get('why-choose/section', [WhyChooseSectionController::class, 'edit'])->name('why-choose.section.edit');
 Route::put('why-choose/section', [WhyChooseSectionController::class, 'update'])->name('why-choose.section.update');
 Route::resource('why-choose', WhyChooseItemController::class)->except('show');
+
+Route::get('about-page', [AboutPageSectionController::class, 'index'])->name('about-page.index');
+Route::put('about-page/sections/{key}', [AboutPageSectionController::class, 'update'])->name('about-page.sections.update');
+Route::resource('about-page/items', AboutPageItemController::class)->except('index', 'show')->names('about-page.items');

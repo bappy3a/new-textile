@@ -6,7 +6,7 @@
         <div class="nk-block-between">
             <div class="nk-block-head-content">
                 <h3 class="nk-block-title page-title">Gallery</h3>
-                <p>Manage the gallery images shown on the home page.</p>
+                <p>Manage gallery images. Turn on "Show on Home" to display an image on the home page.</p>
             </div>
             <div class="nk-block-head-content">
                 <a href="{{ route('gallery.create') }}" class="btn btn-primary">
@@ -55,6 +55,7 @@
                                 <th>Alt Text</th>
                                 <th>Order</th>
                                 <th>Status</th>
+                                <th>Home Page</th>
                                 <th class="text-end">Actions</th>
                             </tr>
                         </thead>
@@ -70,6 +71,11 @@
                                             {{ $image->is_active ? 'Active' : 'Inactive' }}
                                         </span>
                                     </td>
+                                    <td>
+                                        <span class="badge bg-{{ $image->show_on_home ? 'info' : 'light text-dark' }}">
+                                            {{ $image->show_on_home ? 'Shown' : 'Hidden' }}
+                                        </span>
+                                    </td>
                                     <td class="text-end">
                                         <a href="{{ route('gallery.edit', $image) }}" class="btn btn-sm btn-outline-primary">Edit</a>
                                         <form action="{{ route('gallery.destroy', $image) }}" method="POST" class="d-inline"
@@ -81,7 +87,7 @@
                                     </td>
                                 </tr>
                             @empty
-                                <tr><td colspan="6" class="text-center py-4">No images yet.</td></tr>
+                                <tr><td colspan="7" class="text-center py-4">No images yet.</td></tr>
                             @endforelse
                         </tbody>
                     </table>

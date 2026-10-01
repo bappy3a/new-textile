@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\AboutPageSection;
 use App\Models\AboutUs;
 use App\Models\GalleryImage;
 use App\Models\GallerySection;
@@ -11,15 +12,14 @@ use App\Models\ServiceSection;
 use App\Models\Slider;
 use App\Models\WhyChooseItem;
 use App\Models\WhyChooseSection;
-use Illuminate\Http\Request;
+use Illuminate\Contracts\Support\Renderable;
 
 class HomeController extends Controller
 {
-
     /**
      * Show the application dashboard.
      *
-     * @return \Illuminate\Contracts\Support\Renderable
+     * @return Renderable
      */
     public function index()
     {
@@ -28,7 +28,7 @@ class HomeController extends Controller
         $about = AboutUs::first();
         $services = Service::active()->get();
         $serviceSection = ServiceSection::first();
-        $galleryImages = GalleryImage::active()->get();
+        $galleryImages = GalleryImage::onHome()->get();
         $gallerySection = GallerySection::first();
         $whyChoose = WhyChooseSection::first();
         $whyChooseItems = WhyChooseItem::active()->get();
@@ -38,6 +38,11 @@ class HomeController extends Controller
 
     public function aboutUs()
     {
-        return view('about-us');
+        $sections = AboutPageSection::where('is_active', true)
+            ->with(['items' => fn ($query) => $query->active()])
+            ->get()
+            ->keyBy('key');
+
+        return view('about-us', compact('sections'));
     }
 }

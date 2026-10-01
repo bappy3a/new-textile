@@ -5,8 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\GalleryImage;
 use App\Models\GallerySection;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\UploadedFile;
 use Illuminate\Http\Request;
+use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\File;
 use Illuminate\View\View;
 
@@ -40,6 +40,7 @@ class GalleryController extends Controller
                 'image' => $this->upload($file),
                 'sort_order' => ++$order,
                 'is_active' => $request->boolean('is_active', true),
+                'show_on_home' => $request->boolean('show_on_home'),
             ]);
         }
 
@@ -59,6 +60,7 @@ class GalleryController extends Controller
             'image' => ['nullable', 'image', 'mimes:jpg,jpeg,png,webp', 'max:4096'],
         ]);
         $data['is_active'] = $request->boolean('is_active');
+        $data['show_on_home'] = $request->boolean('show_on_home');
         $data['sort_order'] = $data['sort_order'] ?? 0;
 
         if ($request->hasFile('image')) {

@@ -6,13 +6,14 @@ use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 
-#[Fillable(['image', 'alt_text', 'sort_order', 'is_active'])]
+#[Fillable(['image', 'alt_text', 'sort_order', 'is_active', 'show_on_home'])]
 class GalleryImage extends Model
 {
     protected function casts(): array
     {
         return [
             'is_active' => 'boolean',
+            'show_on_home' => 'boolean',
             'sort_order' => 'integer',
         ];
     }
@@ -20,6 +21,11 @@ class GalleryImage extends Model
     public function scopeActive(Builder $query): Builder
     {
         return $query->where('is_active', true)->orderBy('sort_order')->orderBy('id');
+    }
+
+    public function scopeOnHome(Builder $query): Builder
+    {
+        return $query->active()->where('show_on_home', true);
     }
 
     public function getImageUrlAttribute(): string
