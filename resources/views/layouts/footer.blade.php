@@ -1,31 +1,41 @@
+@php
+    $socials = collect(\App\Models\Setting::GROUPS['Social Links'])
+        ->map(fn ($field, $key) => ['icon' => $field['icon'], 'url' => setting($key)])
+        ->filter(fn ($social) => $social['url']);
+    $phone = setting('footer_phone');
+    $email = setting('footer_email');
+@endphp
 <footer class="main-footer-metal bg-section dark-section">
         <div class="container">
             <div class="row">
                 <div class="col-xl-3">
                     <!-- About Footer Start -->
                     <div class="about-footer-metal">
+                        @if ($logo = setting('footer_logo'))
                         <!-- Footer Logo Start -->
                         <div class="footer-logo">
-                            <img src="images/footer-logo.svg" alt="">
+                            <a href="{{ route('home') }}"><img src="{{ asset($logo) }}" alt="{{ config('app.name') }}"></a>
                         </div>
                         <!-- Footer Logo End -->
+                        @endif
 
-                        <!-- About Footer Content Start -->
+                        @if ($about = setting('footer_about'))
                         <div class="about-footer-content-metal">
-                            <p>we are dedicated to crafting high-quality fabric that combine innovation, sustainability.</p>
+                            <p>{{ $about }}</p>
                         </div>
-                        <!-- About Footer Content End -->
+                        @endif
 
+                        @if ($socials->isNotEmpty())
                         <!-- Footer Social Links Start -->
                         <div class="footer-social-links-metal">
                             <ul>
-                                <li><a href="#"><i class="fa-brands fa-pinterest-p"></i></a></li>
-                                <li><a href="#"><i class="fa-brands fa-x-twitter"></i></a></li>
-                                <li><a href="#"><i class="fa-brands fa-facebook-f"></i></a></li>
-                                <li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>                                    								
+                                @foreach ($socials as $social)
+                                    <li><a href="{{ $social['url'] }}" @if ($social['url'] !== '#') target="_blank" rel="noopener" @endif><i class="fa-brands {{ $social['icon'] }}"></i></a></li>
+                                @endforeach
                             </ul>
                         </div>
                         <!-- Footer Social Links End -->
+                        @endif
                     </div>
                     <!-- About Footer End -->
                 </div>
@@ -33,62 +43,66 @@
                 <div class="col-xl-9">
                     <!-- Footer Links Box Start -->
                     <div class="footer-links-box-metal">
+                        @if ($links = \App\Models\Setting::links('footer_links'))
                         <!-- Footer Links Start -->
                         <div class="footer-links-metal">
-                            <h3>Quick Links</h3>
+                            <h3>{{ setting('footer_links_title') }}</h3>
                             <ul>
-                                <li><a href="index-2.html">Home</a></li>
-                                <li><a href="about.html">About Us</a></li>
-                                <li><a href="services.html">Services</a></li>
-                                <li><a href="projects.html">Projects</a></li>
-                                <li><a href="contact.html">Contact Us</a></li>
+                                @foreach ($links as $link)
+                                    <li><a href="{{ $link['url'] }}">{{ $link['label'] }}</a></li>
+                                @endforeach
                             </ul>
                         </div>
                         <!-- Footer Links End -->
+                        @endif
 
-                        <!-- Footer Links Start -->
+                        @if ($phone || $email)
+                        <!-- Footer Contact Start -->
                         <div class="footer-links-metal footer-contact-box-metal">
-                            <h3>Contact Information</h3>
-                            <!-- Footer Contact Item List Start -->
+                            <h3>{{ setting('footer_contact_title') }}</h3>
                             <div class="footer-contact-item-list-metal">
-                                <!-- Footer Contact Item Start -->
+                                @if ($phone)
                                 <div class="footer-contact-item-metal">
-                                    <p>Need Help!</p>
-                                    <h4><a href="tel:+123654789">+(123) 456 - 789</a></h4>                                        
+                                    <p>{{ setting('footer_phone_label') }}</p>
+                                    <h4><a href="tel:{{ preg_replace('/[^\d+]/', '', $phone) }}">{{ $phone }}</a></h4>
                                 </div>
-                                <!-- Footer Contact Item End -->
+                                @endif
 
-                                <!-- Footer Contact Item Start -->
+                                @if ($email)
                                 <div class="footer-contact-item-metal">
-                                    <p>E-mail Us</p>
-                                    <h4><a href="mailto:info@domainname.com">info@domainname.com</a></h4>
+                                    <p>{{ setting('footer_email_label') }}</p>
+                                    <h4><a href="mailto:{{ $email }}">{{ $email }}</a></h4>
                                 </div>
-                                <!-- Footer Contact Item End -->
+                                @endif
                             </div>
-                            <!-- Footer Contact Item List End -->
                         </div>
-                        <!-- Footer Links End -->
+                        <!-- Footer Contact End -->
+                        @endif
 
                         <!-- Footer Links Start -->
                         <div class="footer-links-metal footer-newsletter-form-metal">
-                            <h3>Subscribe Now!</h3>
+                            @if ($newsletter = setting('footer_newsletter_title'))
+                            <h3>{{ $newsletter }}</h3>
                             <form id="newslettersForm" action="#" method="POST">
                                 <div class="form-group">
                                     <input type="email" name="mail" class="form-control" id="mail" placeholder="Your Email" required>
-                                    <button type="submit" class="newsletter-btn"><img src="images/arrow-primary.svg" alt=""></button>
+                                    <button type="submit" class="newsletter-btn"><img src="{{ asset('frontend/images/arrow-primary.svg') }}" alt=""></button>
                                 </div>
                             </form>
+                            @endif
 
+                            @if ($address = setting('footer_address'))
                             <!-- Footer Location Item Start -->
                             <div class="footer-location-item-metal">
                                 <div class="icon-box">
-                                    <img src="images/icon-location-accent.svg" alt="">
+                                    <img src="{{ asset('frontend/images/icon-location-accent.svg') }}" alt="">
                                 </div>
                                 <div class="footer-location-item-content-metal">
-                                    <p>123 Industrial Estate, Textile Park, Mumbai, India</p>
+                                    <p>{{ $address }}</p>
                                 </div>
                             </div>
                             <!-- Footer Location Item End -->
+                            @endif
                         </div>
                         <!-- Footer Links End -->
                     </div>
@@ -98,7 +112,7 @@
                 <div class="col-lg-12">
                     <!-- Footer Copyright Text Start -->
                     <div class="footer-copyright-text-metal">
-                        <p>Copyright © 2025 All Rights Reserved.</p>
+                        <p>{{ str_replace('{year}', date('Y'), setting('footer_copyright', 'Copyright © {year} All Rights Reserved.')) }}</p>
                     </div>
                     <!-- Footer Copyright Text End -->
                 </div>

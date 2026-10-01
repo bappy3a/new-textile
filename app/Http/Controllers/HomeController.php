@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\AboutPageSection;
 use App\Models\AboutUs;
+use App\Models\ContactInfo;
 use App\Models\GalleryImage;
 use App\Models\GallerySection;
 use App\Models\HeroInfo;
@@ -44,5 +45,19 @@ class HomeController extends Controller
             ->keyBy('key');
 
         return view('about-us', compact('sections'));
+    }
+
+    public function products()
+    {
+        $galleryImages = GalleryImage::active()->orderBy('sort_order', 'desc')->get();
+
+        return view('products', compact('galleryImages'));
+    }
+
+    public function contactUs()
+    {
+        $contact = ContactInfo::first();
+
+        return view('contact-us', compact('contact'));
     }
 }

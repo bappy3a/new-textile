@@ -31,8 +31,8 @@ if (! function_exists('areActiveRoutesRequest')) {
 }
 
 if (! function_exists('setting')) {
-    function setting($key, $default = null)
+    function setting(string $key, mixed $default = null): mixed
     {
-        return Setting::where('key', $key)->value('value') ?? $default;
+        return Setting::get($key, $default);
     }
 }

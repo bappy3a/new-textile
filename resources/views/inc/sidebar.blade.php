@@ -36,10 +36,32 @@
             <span class="nk-menu-text">About Us Page</span>
         </a>
     </li>
+    <li class="nk-menu-item {{ areActiveRoutes(['contact-info.edit']) }}">
+        <a href="{{ route('contact-info.edit') }}" class="nk-menu-link">
+            <span class="nk-menu-icon"><em class="icon ni ni-call-fill"></em></span>
+            <span class="nk-menu-text">Contact Us Page</span>
+        </a>
+    </li>
+    <li class="nk-menu-item {{ areActiveRoutes(['contact-messages.index', 'contact-messages.show']) }}">
+        <a href="{{ route('contact-messages.index') }}" class="nk-menu-link">
+            <span class="nk-menu-icon"><em class="icon ni ni-chat-fill"></em></span>
+            <span class="nk-menu-text">Contact Messages</span>
+            @php($unreadMessages = \App\Models\ContactMessage::unread()->count())
+            @if ($unreadMessages)
+                <span class="nk-menu-badge">{{ $unreadMessages }}</span>
+            @endif
+        </a>
+    </li>
     <li class="nk-menu-item {{ areActiveRoutes(['gallery.index', 'gallery.create', 'gallery.edit']) }}">
         <a href="{{ route('gallery.index') }}" class="nk-menu-link">
             <span class="nk-menu-icon"><em class="icon ni ni-img-fill"></em></span>
             <span class="nk-menu-text">Products Gallery</span>
+        </a>
+    </li>
+    <li class="nk-menu-item {{ areActiveRoutes(['settings.edit']) }}">
+        <a href="{{ route('settings.edit') }}" class="nk-menu-link">
+            <span class="nk-menu-icon"><em class="icon ni ni-setting-alt-fill"></em></span>
+            <span class="nk-menu-text">Settings</span>
         </a>
     </li>
 </ul><!-- .nk-menu -->

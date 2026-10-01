@@ -36,7 +36,7 @@
             <div class="col-md-6">
                 <label class="form-label" for="{{ $key }}_button_url">Button URL</label>
                 <input type="text" class="form-control" id="{{ $key }}_button_url" name="button_url" value="{{ $value('button_url') }}">
-                <div class="form-note">Path (e.g. <code>contact</code>) or full URL.</div>
+                <div class="form-note">Path (e.g. <code>contact-us</code>) or full URL.</div>
             </div>
         @endif
 

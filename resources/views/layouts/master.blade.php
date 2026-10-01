@@ -12,7 +12,7 @@
 	<!-- Page Title -->
     <title>{{ config('app.name') }}</title>
 	<!-- Favicon Icon -->
-	<link rel="shortcut icon" type="image/x-icon" href="images/favicon.png">
+	<link rel="shortcut icon" href="{{ asset(setting('favicon', 'frontend/images/favicon.png')) }}">
 	<!-- Google Fonts Css-->
 	<link rel="preconnect" href="https://fonts.googleapis.com/">
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
@@ -40,7 +40,7 @@
 	<div class="preloader">
 		<div class="loading-container">
 			<div class="loading"></div>
-			<div id="loading-icon"><img src="images/loader.svg" alt=""></div>
+			<div id="loading-icon"><img src="{{ asset('frontend/images/loader.svg') }}" alt=""></div>
 		</div>
 	</div>
 	<!-- Preloader End -->

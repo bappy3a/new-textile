@@ -329,23 +329,31 @@
 
 	function submitForm(){
 		/* Ajax call to submit form */
+		var $button = $contactform.find('button[type="submit"]').prop('disabled', true);
 		$.ajax({
 			type: "POST",
-			url: "form-process.php",
+			url: $contactform.attr('action'),
 			data: $contactform.serialize(),
-			success : function(text){
-				if (text === "success"){
-					formSuccess();
-				} else {
-					submitMSG(false,text);
-				}
+			dataType: "json",
+			headers: { "Accept": "application/json" },
+			success : function(response){
+				formSuccess(response.message);
+			},
+			error : function(xhr){
+				var res = xhr.responseJSON || {};
+				var msg = res.errors ? Object.values(res.errors)[0][0] : (res.message || "Something went wrong. Please try again.");
+				if (xhr.status === 429) msg = "Too many messages. Please wait a minute and try again.";
+				submitMSG(false, msg);
+			},
+			complete : function(){
+				$button.prop('disabled', false);
 			}
 		});
 	}
 
-	function formSuccess(){
+	function formSuccess(msg){
 		$contactform[0].reset();
-		submitMSG(true, "Message Sent Successfully!")
+		submitMSG(true, msg || "Message Sent Successfully!")
 	}
 
 	function submitMSG(valid, msg){

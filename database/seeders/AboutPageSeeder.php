@@ -39,7 +39,7 @@ class AboutPageSeeder extends Seeder
                 'image_2' => self::IMG.'about-us-image-2.jpg',
                 'image_3' => self::IMG.'about-counter-image.png',
                 'button_text' => 'Contact now',
-                'button_url' => 'contact',
+                'button_url' => 'contact-us',
                 'contact_label' => 'Need Any Help?',
                 'contact_phone' => '+(123) 456-789',
             ],
@@ -70,13 +70,13 @@ class AboutPageSeeder extends Seeder
                 'title' => 'Honored for excellence in textile manufacturing',
                 'description' => "Our journey in the textile industry has been marked by innovation, dedication, and excellence. Over the years, we've been honored with numerous awards and recognitions.",
                 'button_text' => 'contact us',
-                'button_url' => 'contact',
+                'button_url' => 'contact-us',
             ],
             'faqs' => [
                 'subtitle' => 'Frequently Asked Questions',
                 'title' => 'Everything you need to know about textile',
                 'description' => 'From product details to production techniques, our FAQ section helps you quickly find the information you need.',
-                'button_url' => 'contact',
+                'button_url' => 'contact-us',
             ],
         ];
     }

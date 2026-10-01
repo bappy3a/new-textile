@@ -4,10 +4,13 @@ use App\Http\Controllers\AboutPageItemController;
 use App\Http\Controllers\AboutPageSectionController;
 use App\Http\Controllers\AboutUsController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ContactInfoController;
+use App\Http\Controllers\ContactMessageController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\HeroInfoController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\ServiceSectionController;
+use App\Http\Controllers\SettingController;
 use App\Http\Controllers\SliderController;
 use App\Http\Controllers\WhyChooseItemController;
 use App\Http\Controllers\WhyChooseSectionController;
@@ -31,3 +34,10 @@ Route::resource('why-choose', WhyChooseItemController::class)->except('show');
 Route::get('about-page', [AboutPageSectionController::class, 'index'])->name('about-page.index');
 Route::put('about-page/sections/{key}', [AboutPageSectionController::class, 'update'])->name('about-page.sections.update');
 Route::resource('about-page/items', AboutPageItemController::class)->except('index', 'show')->names('about-page.items');
+
+Route::get('contact-info', [ContactInfoController::class, 'edit'])->name('contact-info.edit');
+Route::put('contact-info', [ContactInfoController::class, 'update'])->name('contact-info.update');
+Route::resource('contact-messages', ContactMessageController::class)->only('index', 'show', 'destroy');
+
+Route::get('settings', [SettingController::class, 'edit'])->name('settings.edit');
+Route::put('settings', [SettingController::class, 'update'])->name('settings.update');
