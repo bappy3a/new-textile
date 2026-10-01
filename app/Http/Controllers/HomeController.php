@@ -35,4 +35,9 @@ class HomeController extends Controller
 
         return view('index', compact('sliders', 'heroInfo', 'about', 'services', 'serviceSection', 'galleryImages', 'gallerySection', 'whyChoose', 'whyChooseItems'));
     }
+
+    public function aboutUs()
+    {
+        return view('about-us');
+    }
 }

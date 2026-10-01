@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes(['register' => false]);
 Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/about-us', [HomeController::class, 'aboutUs'])->name('about-us');
 
 
 Route::prefix('backend')->middleware(['auth'])->group(function (){
