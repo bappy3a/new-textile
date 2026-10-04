@@ -10,6 +10,8 @@ use Illuminate\View\View;
 
 class AboutPageSectionController extends Controller
 {
+    private const DEPARTMENT_SECTION = 'departments';
+
     private const UPLOAD_DIR = 'uploads/about-page';
 
     public function index(Request $request): View
@@ -34,15 +36,20 @@ class AboutPageSectionController extends Controller
         $section = AboutPageSection::firstOrNew(['key' => $key]);
         $images = array_keys($section->config()['images']);
 
-        $rules = [
-            'subtitle' => ['nullable', 'string', 'max:255'],
-            'title' => ['required', 'string', 'max:255'],
-            'description' => ['nullable', 'string', 'max:1000'],
-            'button_text' => ['nullable', 'string', 'max:100'],
-            'button_url' => ['nullable', 'string', 'max:255'],
-            'contact_label' => ['nullable', 'string', 'max:255'],
-            'contact_phone' => ['nullable', 'string', 'max:50'],
-        ];
+        $rules = $key === self::DEPARTMENT_SECTION
+            ? [
+                'title' => ['required', 'string', 'max:255'],
+                'description' => ['nullable', 'string', 'max:1000'],
+            ]
+            : [
+                'subtitle' => ['nullable', 'string', 'max:255'],
+                'title' => ['required', 'string', 'max:255'],
+                'description' => ['nullable', 'string', 'max:1000'],
+                'button_text' => ['nullable', 'string', 'max:100'],
+                'button_url' => ['nullable', 'string', 'max:255'],
+                'contact_label' => ['nullable', 'string', 'max:255'],
+                'contact_phone' => ['nullable', 'string', 'max:50'],
+            ];
         foreach ($images as $field) {
             $rules[$field] = ['nullable', 'image', 'mimes:jpg,jpeg,png,webp', 'max:4096'];
         }

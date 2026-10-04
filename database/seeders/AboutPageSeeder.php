@@ -65,12 +65,9 @@ class AboutPageSeeder extends Seeder
                 'description' => 'Our clients choose us not only for the quality they see but for the consistency and integrity woven into every thread we create.',
                 'image_1' => self::IMG.'what-we-do-image.jpg',
             ],
-            'awards' => [
-                'subtitle' => 'Awards',
-                'title' => 'Honored for excellence in textile manufacturing',
-                'description' => "Our journey in the textile industry has been marked by innovation, dedication, and excellence. Over the years, we've been honored with numerous awards and recognitions.",
-                'button_text' => 'contact us',
-                'button_url' => 'contact-us',
+            'departments' => [
+                'title' => 'Our Department',
+                'description' => 'Our specialized departments work together to turn quality fibers into reliable, beautifully finished textiles.',
             ],
             'faqs' => [
                 'subtitle' => 'Frequently Asked Questions',
@@ -83,7 +80,6 @@ class AboutPageSeeder extends Seeder
 
     private function items(): array
     {
-        $awardText = 'Each product reflects precision, care, and a dedication to delivering unmatched value to our clients, we combine.';
         $faqText = 'Yes, we offer complete customization services. You can choose the fabric type, color, pattern, weight, and finish. Our design and R&D team works closely with clients to develop unique fabrics that meet specific needs.';
 
         return [
@@ -119,11 +115,11 @@ class AboutPageSeeder extends Seeder
                 ['type' => 'counter', 'title' => 'Meters Of Premium', 'number' => '10', 'suffix' => 'k+', 'icon' => self::IMG.'icon-what-we-counter-2.svg'],
                 ['type' => 'counter', 'title' => 'Client Trust by Global', 'number' => '500', 'suffix' => '+', 'icon' => self::IMG.'icon-what-we-counter-3.svg'],
             ],
-            'awards' => [
-                ['type' => 'award', 'title' => 'Excellence in Textile Innovation Award', 'description' => $awardText, 'icon' => self::IMG.'awards-image-1.svg'],
-                ['type' => 'award', 'title' => 'Best Sustainable Fabric Manufacturer', 'description' => $awardText, 'icon' => self::IMG.'awards-image-2.svg'],
-                ['type' => 'award', 'title' => 'Global Quality Excellence Award', 'description' => $awardText, 'icon' => self::IMG.'awards-image-3.svg'],
-                ['type' => 'award', 'title' => 'Green Manufacture Leadership Award', 'description' => $awardText, 'icon' => self::IMG.'awards-image-4.svg'],
+            'departments' => [
+                ['type' => 'department', 'title' => 'Spinning Department', 'description' => 'Transforms carefully selected fibers into consistent, high-quality yarn for dependable fabric production.'],
+                ['type' => 'department', 'title' => 'Weaving Department', 'description' => 'Combines modern machinery and skilled craftsmanship to create precise, durable fabric constructions.'],
+                ['type' => 'department', 'title' => 'Dyeing & Finishing', 'description' => 'Delivers accurate color, texture, and performance finishes while maintaining consistent quality.'],
+                ['type' => 'department', 'title' => 'Quality Control', 'description' => 'Inspects every production stage to ensure each fabric meets our standards and customer requirements.'],
             ],
             'faqs' => [
                 ['type' => 'faq', 'title' => 'Can you provide customized fabric designs?', 'description' => $faqText],

@@ -388,55 +388,37 @@
     <!-- What We Do Section End -->
     @endif
 
-    @if ($section = $sections->get('awards'))
-    <!-- Our Awards Section Start -->
-    <div class="our-awards">
+    @if ($section = $sections->get('departments'))
+    <!-- Our Department Section Start -->
+    <div class="our-departments bg-section">
         <div class="container">
-            <div class="row">
-                <div class="col-xl-6">
-                    <div class="our-awards-content">
-                        <div class="section-title">
-                            <h3 class="wow fadeInUp">{{ $section->subtitle }}</h3>
-                            <h2 class="text-anime-style-3" data-cursor="-opaque">{{ $section->title }}</h2>
+            <div class="row section-row">
+                <div class="col-xl-12">
+                    <div class="section-title section-title-center">
+                        <h2 class="text-anime-style-3" data-cursor="-opaque">{{ $section->title }}</h2>
+                        @if ($section->description)
                             <p class="wow fadeInUp" data-wow-delay="0.2s">{{ $section->description }}</p>
-                        </div>
-
-                        @if ($section->button_text)
-                        <div class="awards-btn wow fadeInUp" data-wow-delay="0.4s">
-                            <a href="{{ $section->button_link }}" class="btn-default">{{ $section->button_text }}</a>
-                        </div>
                         @endif
                     </div>
                 </div>
+            </div>
 
-                <div class="col-xl-6">
-                    <!-- Awards Items List Start -->
-                    <div class="awards-items-list">
-                        @foreach ($section->itemsOf('award') as $item)
-                        <div class="awards-item wow fadeInUp" data-wow-delay="{{ $loop->index * 0.2 }}s">
-                            <div class="awards-item-no">
-                                <h3>{{ str_pad($loop->iteration, 2, '0', STR_PAD_LEFT) }}</h3>
-                            </div>
-                            <div class="awards-item-body">
-                                @if ($item->icon)
-                                <div class="awards-item-image">
-                                    <img src="{{ $item->icon_url }}" alt="">
-                                </div>
-                                @endif
-                                <div class="awards-item-content">
-                                    <h3>{{ $item->title }}</h3>
-                                    <p>{{ $item->description }}</p>
-                                </div>
+            <div class="row department-item-list">
+                @foreach ($section->itemsOf('department') as $item)
+                    <div class="col-xl-3 col-md-6">
+                        <div class="department-item wow fadeInUp" data-wow-delay="{{ number_format($loop->index * 0.2, 1) }}s">
+                            <span class="department-item-number">{{ str_pad($loop->iteration, 2, '0', STR_PAD_LEFT) }}</span>
+                            <div class="department-item-content">
+                                <h3>{{ $item->title }}</h3>
+                                <p>{{ $item->description }}</p>
                             </div>
                         </div>
-                        @endforeach
                     </div>
-                    <!-- Awards Items List End -->
-                </div>
+                @endforeach
             </div>
         </div>
     </div>
-    <!-- Our Awards Section End -->
+    <!-- Our Department Section End -->
     @endif
 
     @if ($section = $sections->get('faqs'))

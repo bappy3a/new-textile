@@ -2,6 +2,23 @@
 @php($types = \App\Models\AboutPageSection::SECTIONS[$section]['types'])
 @csrf
 <input type="hidden" name="section" value="{{ $section }}">
+@if ($section === 'departments')
+<div class="row g-4">
+    <div class="col-12">
+        <label class="form-label" for="title">Title <span class="text-danger">*</span></label>
+        <input type="text" class="form-control" id="title" name="title" required
+            value="{{ old('title', $item?->title) }}">
+    </div>
+    <div class="col-12">
+        <label class="form-label" for="description">Description</label>
+        <textarea class="form-control" id="description" name="description" rows="4">{{ old('description', $item?->description) }}</textarea>
+    </div>
+    <div class="col-12">
+        <button type="submit" class="btn btn-primary">Save</button>
+        <a href="{{ route('about-page.index', ['tab' => $section]) }}" class="btn btn-light">Cancel</a>
+    </div>
+</div>
+@else
 <div class="row g-4">
     <div class="col-md-4">
         <label class="form-label" for="type">Type <span class="text-danger">*</span></label>
@@ -65,3 +82,4 @@
         <a href="{{ route('about-page.index', ['tab' => $section]) }}" class="btn btn-light">Cancel</a>
     </div>
 </div>
+@endif

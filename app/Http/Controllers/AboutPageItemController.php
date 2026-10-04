@@ -12,6 +12,8 @@ use Illuminate\View\View;
 
 class AboutPageItemController extends Controller
 {
+    private const DEPARTMENT_SECTION = 'departments';
+
     private const UPLOAD_DIR = 'uploads/about-page';
 
     public function create(Request $request): View
@@ -25,6 +27,10 @@ class AboutPageItemController extends Controller
     {
         $data = $this->validated($request);
         $data['icon'] = $request->hasFile('icon') ? $this->uploadIcon($request) : null;
+
+        if ($data['section'] === self::DEPARTMENT_SECTION) {
+            $data['sort_order'] = (int) AboutPageItem::where('section', self::DEPARTMENT_SECTION)->max('sort_order') + 1;
+        }
 
         AboutPageItem::create($data);
 
@@ -76,6 +82,18 @@ class AboutPageItemController extends Controller
     private function validated(Request $request): array
     {
         $section = $this->sectionKey($request->input('section'));
+
+        if ($section === self::DEPARTMENT_SECTION) {
+            $data = $request->validate([
+                'section' => ['required', 'string'],
+                'title' => ['required', 'string', 'max:255'],
+                'description' => ['nullable', 'string', 'max:1000'],
+            ]);
+            $data['type'] = 'department';
+            $data['is_active'] = true;
+
+            return $data;
+        }
 
         $data = $request->validate([
             'section' => ['required', 'string'],

@@ -41,11 +41,11 @@ class AboutPageSection extends Model
             'fields' => [],
             'types' => ['feature' => 'Body Item', 'counter' => 'Counter'],
         ],
-        'awards' => [
-            'label' => 'Awards',
+        'departments' => [
+            'label' => 'Our Department',
             'images' => [],
-            'fields' => ['button'],
-            'types' => ['award' => 'Award'],
+            'fields' => [],
+            'types' => ['department' => 'Department'],
         ],
         'faqs' => [
             'label' => 'FAQs',

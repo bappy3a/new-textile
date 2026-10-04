@@ -5,6 +5,38 @@
     </a>
 </div>
 <div class="table-responsive border rounded">
+    @if ($key === 'departments')
+    <table class="table table-hover mb-0">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th class="text-end">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @forelse ($section->items as $item)
+                <tr>
+                    <td>{{ $loop->iteration }}</td>
+                    <td><strong>{{ $item->title }}</strong></td>
+                    <td>{{ \Illuminate\Support\Str::limit($item->description, 100) }}</td>
+                    <td class="text-end">
+                        <a href="{{ route('about-page.items.edit', $item) }}" class="btn btn-sm btn-outline-primary">Edit</a>
+                        <form action="{{ route('about-page.items.destroy', $item) }}" method="POST" class="d-inline"
+                            onsubmit="return confirm('Delete this department?')">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-sm btn-outline-danger">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+            @empty
+                <tr><td colspan="4" class="text-center py-4">No departments yet.</td></tr>
+            @endforelse
+        </tbody>
+    </table>
+    @else
     <table class="table table-hover mb-0">
         <thead>
             <tr>
@@ -55,4 +87,5 @@
             @endforelse
         </tbody>
     </table>
+    @endif
 </div>

@@ -5,11 +5,13 @@
     @csrf
     @method('PUT')
     <div class="row g-4">
+        @unless ($key === 'departments')
         <div class="col-md-6">
             <label class="form-label" for="{{ $key }}_subtitle">Subtitle</label>
             <input type="text" class="form-control" id="{{ $key }}_subtitle" name="subtitle" value="{{ $value('subtitle') }}">
         </div>
-        <div class="col-md-6">
+        @endunless
+        <div class="{{ $key === 'departments' ? 'col-12' : 'col-md-6' }}">
             <label class="form-label" for="{{ $key }}_title">Title <span class="text-danger">*</span></label>
             <input type="text" class="form-control" id="{{ $key }}_title" name="title" required value="{{ $value('title') }}">
         </div>
