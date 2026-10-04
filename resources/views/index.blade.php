@@ -275,11 +275,11 @@
                                     </h3>
                                     <p>{{ $service->description }}</p>
                                 </div>
-                                <div class="services-btn-metal">
+                                {{-- <div class="services-btn-metal">
                                     <a href="{{ url($service->link_url ?: 'services') }}" class="readmore-btn">
                                         View Details
                                     </a>
-                                </div>
+                                </div> --}}
                             </div>
                         </div>
                     </div>
