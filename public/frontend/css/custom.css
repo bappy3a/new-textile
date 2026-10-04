@@ -215,7 +215,7 @@ a:focus{
 
 .btn-default{
 	position: relative;
-	display: inline-block;  
+	display: inline-block;
 	font-size: 16px;
 	font-weight: 600;
 	line-height: 1em;
@@ -256,7 +256,7 @@ a:focus{
 	background-image: url('../images/arrow-primary.svg');
 }
 
-.btn-default::after{ 
+.btn-default::after{
 	content: '';
     position: absolute;
     top: 0;
@@ -414,7 +414,7 @@ a:focus{
 }
 
 .section-row .section-title{
-	margin-bottom: 0; 
+	margin-bottom: 0;
 }
 
 .section-row .section-title.section-title-center{
@@ -438,7 +438,7 @@ a:focus{
 }
 
 .section-title-content p:last-child{
-	margin-bottom: 0;	
+	margin-bottom: 0;
 }
 
 .section-title{
@@ -2766,7 +2766,7 @@ header.main-header .header-sticky.active{
 .pricing-item.highlighted-box .pricing-item-body{
 	background-color: var(--accent-color);
 }
- 
+
 .pricing-item.highlighted-box .pricing-item-list ul li,
 .pricing-item.highlighted-box .pricing-item-list ul li:before{
 	color: var(--primary-color);
@@ -4184,7 +4184,7 @@ header.main-header .header-sticky.active{
 	border-radius: 10px;
 	aspect-ratio: 1 / 0.466;
     object-fit: cover;
-} 
+}
 
 .sidebar-cta-body-content{
 	position: relative;
@@ -4435,7 +4435,7 @@ header.main-header .header-sticky.active{
 .service-key-point-box::before{
     content: '';
     position: absolute;
-    top: 0; 
+    top: 0;
     bottom: 0;
     left: 0;
     right: 0;
@@ -4515,7 +4515,7 @@ header.main-header .header-sticky.active{
 	content: '';
 	position: absolute;
 	top: 50%;
-	right: -30px;	
+	right: -30px;
 	transform: translateY(-50%);
 	background: var(--divider-color);
 	width: 1px;
@@ -4574,7 +4574,7 @@ header.main-header .header-sticky.active{
 .page-blog{
     padding: 100px 0;
 }
-	
+
 .page-pagination{
     margin-top: 30px;
     text-align: center;
@@ -4603,7 +4603,7 @@ header.main-header .header-sticky.active{
     transition: all 0.3s ease-in-out;
 }
 
-.page-pagination ul li.active a, 
+.page-pagination ul li.active a,
 .page-pagination ul li a:hover{
     background: var(--primary-color);
     color: var(--white-color);
@@ -4643,7 +4643,7 @@ header.main-header .header-sticky.active{
 }
 
 .post-image figure{
-	display: block;	
+	display: block;
 	border-radius: 10px;
 	overflow: hidden;
 }
@@ -5832,7 +5832,7 @@ header.main-header .header-sticky.active{
 /************************************/
 
 @media only screen and (max-width: 1880px){
-	
+
 	.bg-section{
 		width: calc(100% - 40px);
 	}
@@ -5901,7 +5901,7 @@ header.main-header .header-sticky.active{
 	.what-we-do-content{
 		padding: 80px 40px;
 	}
-	
+
 	.what-we-counters-list{
 		padding-top: 40px;
 		margin-top: 40px;
@@ -5922,7 +5922,7 @@ header.main-header .header-sticky.active{
 	.team-cta-box{
 		padding: 30px;
 	}
-	
+
 	.sidebar-cta-body{
 		padding: 25px;
 	}
@@ -5959,7 +5959,7 @@ header.main-header .header-sticky.active{
 	.post-content{
 		max-width: 1100px;
 	}
-	
+
 	.project-why-choose-item{
 		gap: 15px;
 	}
@@ -6020,7 +6020,7 @@ header.main-header .header-sticky.active{
 	.section-content-btn .section-btn{
 		margin-top: 20px;
 	}
-	
+
 	.section-title-content{
         margin-top: 10px;
     }
@@ -6075,11 +6075,11 @@ header.main-header .header-sticky.active{
 		height: auto;
 		margin-bottom: 30px;
 	}
-		
+
 	.benefits-content-body{
 		margin: 0;
 	}
-	
+
 	.benefits-award-box{
 		padding: 30px;
 	}
@@ -6106,11 +6106,11 @@ header.main-header .header-sticky.active{
 		margin-bottom: 30px;
 		height: auto;
 	}
-	
+
 	.testimonial-client-box{
 		max-width: 100%;
 	}
-	
+
 	.testimonial-client-content{
 		margin-top: 20px;
 	}
@@ -6226,7 +6226,7 @@ header.main-header .header-sticky.active{
 		margin-bottom: 15px;
 		padding-bottom: 15px;
 	}
-	
+
 	.project-image figure img{
 		aspect-ratio: 1 / 0.8;
 	}
@@ -6302,11 +6302,11 @@ header.main-header .header-sticky.active{
 		height: 34px;
 		background-size: 18px auto;
 	}
-	
+
 	header.main-header{
 		top: 0;
 	}
-	
+
 	header.main-header .header-sticky.active{
 		border-radius: 0;
 	}
@@ -6342,7 +6342,7 @@ header.main-header .header-sticky.active{
 	.section-row{
 		margin-bottom: 40px;
 	}
-	
+
 	.section-title{
 		margin-bottom: 30px;
 	}
@@ -6530,7 +6530,7 @@ header.main-header .header-sticky.active{
 	.feature-bg-img img{
 		max-width: 80px;
 	}
-	
+
 	.feature-info-list ul li{
 		padding: 4px 14px;
 	}
@@ -6563,11 +6563,11 @@ header.main-header .header-sticky.active{
 	.our-pricing{
 		padding: 50px 0;
 	}
-	
+
 	.pricing-item-header{
 		padding: 20px 15px;
 	}
-	
+
 	.pricing-item-header .icon-box{
 		height: 50px;
     	width: 50px;
@@ -6644,7 +6644,7 @@ header.main-header .header-sticky.active{
 
 	.our-blog{
 		padding: 50px 0 20px;
-	}	
+	}
 
 	.post-item-tags{
 		top: 20px;
@@ -6914,7 +6914,7 @@ header.main-header .header-sticky.active{
 
 	.page-blog{
 		padding: 50px 0;
-	}	
+	}
 
 	.page-pagination{
 		margin-top: 10px;
@@ -6923,48 +6923,48 @@ header.main-header .header-sticky.active{
 	.page-single-post{
         padding: 50px 0;
     }
-    
+
     .post-image{
         margin-bottom: 20px;
     }
-    
+
     .post-entry h2{
         font-size: 38px;
     }
-    
+
     .post-entry p{
         margin-bottom: 15px;
     }
-    
+
     .post-entry ol li,
     .post-entry ul li{
 		font-size: 16px;
         margin-bottom: 10px;
     }
-    
+
     .post-entry blockquote{
         background-position: 20px 20px;
         background-size: 40px;
         padding: 20px 20px 20px 70px;
         margin-bottom: 20px;
     }
-    
+
     .post-entry blockquote p{
         font-size: 18px;
     }
-    
+
     .post-tags{
         margin-bottom: 20px;
     }
-    
+
     .post-tags .tag-links a{
         padding: 12px 15px;
     }
-    
+
     .post-social-sharing ul{
         text-align: left;
     }
-	
+
 	.page-projects{
 		padding: 50px 0 20px;
 	}
@@ -7124,7 +7124,7 @@ header.main-header .header-sticky.active{
 	.error-page{
 		padding: 50px 0px;
 	}
-	
+
 	.error-page-image{
 		margin-bottom: 20px;
 	}
@@ -7272,7 +7272,7 @@ header.main-header .header-sticky.active{
 
 	.about-contact-box-content h3{
 		font-size: 18px;
-	}	
+	}
 
 	.services-item-content h3{
 		font-size: 18px;
@@ -7281,7 +7281,7 @@ header.main-header .header-sticky.active{
 	.why-choose-us-body ul li{
 		width: 100%;
 	}
-	
+
 	.why-choose-us-body ul li:nth-child(4n - 2),
 	.why-choose-us-body ul li:nth-child(4n - 1){
 		background-color: var(--secondary-color);
@@ -7292,7 +7292,7 @@ header.main-header .header-sticky.active{
 		background-color: var(--primary-color);
 		color: var(--white-color);
 	}
-	
+
 	.why-choose-item{
 		width: 100%;
         min-height: 100%;
@@ -7302,7 +7302,7 @@ header.main-header .header-sticky.active{
 	.why-choose-item-content h2{
 		font-size: 28px;
 	}
-	
+
 	.why-choose-item-content h3{
 		font-size: 18px;
 		margin-top: 10px;
@@ -7612,7 +7612,7 @@ header.main-header .header-sticky.active{
 	.awards-item-content h3{
 		font-size: 18px;
 	}
-	
+
 	.team-item-image,
 	.team-item-image a,
 	.team-item-image figure,
@@ -7653,11 +7653,11 @@ header.main-header .header-sticky.active{
 	.post-entry h2{
 		font-size: 26px;
 	}
-	
+
 	.tag-links{
 		font-size: 18px;
 	}
-	
+
 	.page-category-list h3,
 	.sidebar-cta-body-content h3{
 		font-size: 18px;
@@ -7707,11 +7707,11 @@ header.main-header .header-sticky.active{
 		width: 100%;
 		height: 1px;
 	}
-	
+
 	.project-item-content h2{
 		font-size: 18px;
 	}
-	
+
 	.project-entry h2{
 		font-size: 26px;
 	}
@@ -7719,7 +7719,7 @@ header.main-header .header-sticky.active{
 	.project-entry h3{
 		font-size: 18px;
 	}
-	
+
 	.project-why-choose-item{
 		width: 100%;
 	}
@@ -8063,7 +8063,12 @@ header.main-header.header-metal .header-sticky.active{
 
 .hero-info-contact-item-metal{
     position: relative;
-    width: calc(50% - 25px);
+    width: calc(40% - 25px);
+    min-width: 0;
+}
+
+.hero-info-contact-item-metal:first-child{
+    width: calc(60% - 25px);
 }
 
 .hero-info-contact-item-metal::before{
@@ -8087,8 +8092,9 @@ header.main-header.header-metal .header-sticky.active{
 }
 
 .hero-info-contact-item-metal h3{
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 700;
+    overflow-wrap: anywhere;
 }
 
 .hero-info-contact-item-metal h3 a{
@@ -8872,7 +8878,7 @@ header.main-header.header-metal .header-sticky.active{
 .intro-video-metal::before{
     content: '';
     position: absolute;
-    top: 0; 
+    top: 0;
     bottom: 0;
     left: 0;
     right: 0;
@@ -8906,7 +8912,7 @@ header.main-header.header-metal .header-sticky.active{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 15px 30px;    
+    gap: 15px 30px;
     list-style: none;
     margin: 0;
     padding: 0;
@@ -9381,7 +9387,7 @@ header.main-header.header-metal .header-sticky.active{
     width: calc(37.5% - 3.472vw);
 }
 
-.footer-links-metal h3{ 
+.footer-links-metal h3{
 	font-size: 20px;
 	text-transform: capitalize;
 	color: var(--white-color);
@@ -9530,7 +9536,8 @@ header.main-header.header-metal .header-sticky.active{
         gap: 20px;
     }
 
-    .hero-info-contact-item-metal{
+    .hero-info-contact-item-metal,
+    .hero-info-contact-item-metal:first-child{
         width: auto;
     }
 
@@ -9753,8 +9760,8 @@ header.main-header.header-metal .header-sticky.active{
 
     .hero-metal{
         padding: 100px 0;
-    }   
-    
+    }
+
     .hero-content-metal .section-title h1{
         font-size: 54px;
     }
@@ -9942,7 +9949,7 @@ header.main-header.header-metal .header-sticky.active{
 
 @media only screen and (max-width: 767px){
 
-    
+
     .hero-content-metal .section-title h1{
         font-size: 28px;
     }
@@ -9976,8 +9983,15 @@ header.main-header.header-metal .header-sticky.active{
         max-width: 50px;
     }
 
+    .hero-info-contact-item-metal,
+    .hero-info-contact-item-metal:first-child{
+        width: 100%;
+    }
+
     .hero-info-contact-item-metal h3{
-        font-size: 16px;
+        font-size: clamp(10px, 3.4vw, 12px);
+        white-space: nowrap;
+        overflow-wrap: normal;
     }
 
     .about-us-metal{
@@ -9991,7 +10005,7 @@ header.main-header.header-metal .header-sticky.active{
 	.about-us-image-box-metal-1{
 		width: calc(48% - 10px);
 		gap: 20px;
-	}	
+	}
 
 	.about-us-image-counter-metal{
 		padding: 20px 15px;
@@ -10212,7 +10226,7 @@ header.main-header.header-metal .header-sticky.active{
 
     .how-work-item-metal .icon-box img{
         max-width: 40px;
-    }    
+    }
 
     .how-work-item-content-metal{
         width: calc(100% - 55px)
@@ -11570,7 +11584,7 @@ header.main-header.header-stone .header-sticky.active{
 	background: var(--bg-color);
 }
 
-.faq-accordion-stone .accordion-item-stone .accordion-button::after, 
+.faq-accordion-stone .accordion-item-stone .accordion-button::after,
 .faq-accordion-stone .accordion-item-stone .accordion-button.collapsed::after{
 	font-family: 'FontAwesome';
 	content: '\f078';
@@ -11921,7 +11935,7 @@ header.main-header.header-stone .header-sticky.active{
 	.benefits-item-list-stone{
 		margin-top: 170px;
 	}
-	
+
 	.pricing-item-stone{
 		padding: 30px;
 	}
@@ -12037,7 +12051,7 @@ header.main-header.header-stone .header-sticky.active{
 	.our-benefits-stone{
 		padding: 50px 0;
 	}
-	
+
 	.benefits-item-list-stone{
 		margin-top: 100px;
 		gap: 30px;
@@ -12046,7 +12060,7 @@ header.main-header.header-stone .header-sticky.active{
 	.benefits-item-stone{
 		width: calc(50% - 15px);
 		border-radius: 10px;
-		padding: 30px;	
+		padding: 30px;
 	}
 
 	.how-work-step-item-stone{
@@ -12365,12 +12379,12 @@ header.main-header.header-stone .header-sticky.active{
 	.faq-accordion-stone .accordion-header .accordion-button{
 		padding: 15px 40px 15px 15px;
 	}
-	
-	.faq-accordion-stone .accordion-item-stone .accordion-button::after, 
+
+	.faq-accordion-stone .accordion-item-stone .accordion-button::after,
 	.faq-accordion-stone .accordion-item-stone .accordion-button.collapsed::after{
 		font-size: 18px;
 		right: 15px;
-	}	
+	}
 
 	.faq-accordion-stone .accordion-item-stone .accordion-body{
 		padding: 15px;
@@ -12417,7 +12431,7 @@ header.main-header.header-stone .header-sticky.active{
 }
 
 @media only screen and (max-width: 767px){
-	
+
 	.hero-content-stone{
 		padding-bottom: 80px;
 	}
@@ -12738,7 +12752,7 @@ header.main-header.header-stone .header-sticky.active{
         padding: 12px 35px 12px 12px;
     }
 
-	.faq-accordion-stone .accordion-item-stone .accordion-button::after, 
+	.faq-accordion-stone .accordion-item-stone .accordion-button::after,
 	.faq-accordion-stone .accordion-item-stone .accordion-button.collapsed::after{
 		font-size: 16px;
 		right: 12px;
