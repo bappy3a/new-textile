@@ -24,6 +24,7 @@ class SettingController extends Controller
         $rules = [];
         foreach ($fields as $key => $field) {
             $rules[$key] = match ($field['type']) {
+                'pdf' => ['nullable', 'file', 'mimes:pdf', 'max:10240'],
                 'image' => ['nullable', 'file', 'mimes:jpg,jpeg,png,webp,svg,ico', 'max:2048'],
                 'email' => ['nullable', 'email', 'max:255'],
                 'url' => ['nullable', 'string', 'max:500', 'regex:/^(#|https?:\/\/\S+)$/'],
@@ -37,7 +38,7 @@ class SettingController extends Controller
         ]);
 
         foreach ($fields as $key => $field) {
-            if ($field['type'] === 'image') {
+            if (in_array($field['type'], ['image', 'pdf'])) {
                 if ($request->hasFile($key)) {
                     $this->deleteUpload(Setting::get($key));
                     $file = $request->file($key);

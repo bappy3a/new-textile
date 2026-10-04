@@ -13,13 +13,16 @@ class Setting extends Model
 
     /**
      * Editable settings, grouped for the admin form.
-     * Types: text, textarea, email, url, image, links (one "Label | url" per line).
+     * Types: text, textarea, email, url, image, pdf, links (one "Label | url" per line).
      */
     public const GROUPS = [
         'Logos' => [
             'site_logo' => ['label' => 'Header Logo', 'type' => 'image'],
             'footer_logo' => ['label' => 'Footer Logo', 'type' => 'image', 'note' => 'Shown on a dark background.'],
             'favicon' => ['label' => 'Favicon', 'type' => 'image', 'note' => 'Square PNG, e.g. 32×32.'],
+        ],
+        'Our Profile' => [
+            'company_profile' => ['label' => 'Company Profile (PDF)', 'type' => 'pdf', 'note' => 'Visitors download this from the "Download Profile" header button. Max 10 MB.'],
         ],
         'Footer About' => [
             'footer_about' => ['label' => 'About Text', 'type' => 'textarea'],

@@ -36,6 +36,12 @@
                                                 </div>
                                             @endif
                                             @break
+                                        @case('pdf')
+                                            <input type="file" class="form-control" id="{{ $key }}" name="{{ $key }}" accept=".pdf,application/pdf">
+                                            @if ($values[$key] ?? null)
+                                                <div class="mt-2"><a href="{{ route('company-profile.download') }}" target="_blank"><em class="icon ni ni-file-pdf"></em> Current file (click to view)</a></div>
+                                            @endif
+                                            @break
                                         @case('textarea')
                                         @case('links')
                                             <textarea class="form-control" id="{{ $key }}" name="{{ $key }}" rows="{{ $field['type'] === 'links' ? 5 : 3 }}">{{ $value }}</textarea>

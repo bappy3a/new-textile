@@ -35,7 +35,11 @@
 
                         <!-- Header Btn Start -->
                         <div class="header-btn">
-                            <a href="{{ route('contact-us') }}" class="btn-default">Contact Us</a>
+                            @if (setting('company_profile'))
+                                <a href="{{ route('company-profile.download') }}" class="btn-default"><i class="fa-solid fa-download me-2"></i>Download Profile</a>
+                            @else
+                                <a href="{{ route('contact-us') }}" class="btn-default">Contact Us</a>
+                            @endif
                         </div>
                         <!-- Header Btn End -->
                     </div>
