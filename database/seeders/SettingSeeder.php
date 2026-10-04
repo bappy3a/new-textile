@@ -27,8 +27,11 @@ class SettingSeeder extends Seeder
             'footer_phone' => '+(123) 456 - 789',
             'footer_email_label' => 'E-mail Us',
             'footer_email' => 'info@domainname.com',
-            'footer_address' => '123 Industrial Estate, Textile Park, Mumbai, India',
-            'footer_newsletter_title' => 'Subscribe Now!',
+            'footer_offices_title' => 'Our Offices',
+            'footer_bd_office_title' => 'BD Office',
+            'footer_address' => 'Dhaka, Bangladesh',
+            'footer_overseas_office_title' => 'Overseas Office',
+            'footer_overseas_office_address' => null,
             'footer_copyright' => 'Copyright © {year} All Rights Reserved.',
         ];
 

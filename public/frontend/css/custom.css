@@ -9268,7 +9268,7 @@ header.main-header.header-metal .header-sticky.active{
 	width: calc(25% - 3.472vw);
 }
 
-.footer-links-metal.footer-newsletter-form-metal,
+.footer-links-metal.footer-addresses-metal,
 .footer-links-metal.footer-contact-box-metal{
     width: calc(37.5% - 3.472vw);
 }
@@ -9337,66 +9337,23 @@ header.main-header.header-metal .header-sticky.active{
     color: var(--accent-color);
 }
 
-.footer-newsletter-form-metal .form-group{
-	display: flex;
-    flex-wrap: wrap;
-    border-bottom: 1px solid var(--dark-divider-color);
-    padding-bottom: 15px;
-}
-
-.footer-newsletter-form-metal .form-group .form-control{
-	width: calc(100% - 30px);
-	font-size: 16px;
-	font-weight: 400;
-	line-height: 1.4em;
-	color: var(--white-color);
-	background: transparent;
-	border: none;
-	border-radius: 0;
-	outline: none;
-	box-shadow: none;
-	padding: 4px 20px 4px 8px;
-}
-
-.footer-newsletter-form-metal .form-group .form-control::placeholder{
-	color: var(--white-color);
-	opacity: 50%;
-}
-
-.footer-newsletter-form-metal .newsletter-btn{
-	width: 30px;
-	height: 30px;
-	background: var(--accent-color);
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	border-radius: 6px;
-	border: none;
-	box-shadow: none;
-	outline: none;
-	transition: all 0.3s ease-in-out;
-}
-
-.footer-newsletter-form-metal .newsletter-btn:hover{
-	background: var(--white-color);
-}
-
-.footer-newsletter-form-metal .newsletter-btn img{
-	width: 100%;
-	max-width: 18px;
-	transition: all 0.3s ease-in-out;
-}
-
-.footer-newsletter-form-metal .newsletter-btn:hover img{
-    transform: rotate(45deg);
-}
-
 .footer-location-item-metal{
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     gap: 15px;
     margin-top: 40px;
+}
+
+.footer-addresses-metal .footer-location-item-metal{
+    align-items: flex-start;
+    margin-top: 0;
+}
+
+.footer-addresses-metal .footer-location-item-metal + .footer-location-item-metal{
+    border-top: 1px solid var(--dark-divider-color);
+    margin-top: 25px;
+    padding-top: 25px;
 }
 
 .footer-location-item-metal .icon-box{
@@ -9416,6 +9373,12 @@ header.main-header.header-metal .header-sticky.active{
 
 .footer-location-item-content-metal{
     width: calc(100% - 65px);
+}
+
+.footer-location-item-content-metal h4{
+    font-size: 18px;
+    color: var(--white-color);
+    margin-bottom: 5px;
 }
 
 .footer-location-item-content-metal p{
@@ -10181,7 +10144,7 @@ header.main-header.header-metal .header-sticky.active{
     }
 
     .footer-links-metal,
-    .footer-links-metal.footer-newsletter-form-metal, 
+    .footer-links-metal.footer-addresses-metal,
     .footer-links-metal.footer-contact-box-metal{
         width: 100%;
     }

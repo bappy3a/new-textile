@@ -4,6 +4,16 @@
         ->filter(fn ($social) => $social['url']);
     $phone = setting('footer_phone');
     $email = setting('footer_email');
+    $offices = collect([
+        [
+            'title' => setting('footer_bd_office_title', 'BD Office'),
+            'address' => setting('footer_address'),
+        ],
+        [
+            'title' => setting('footer_overseas_office_title', 'Overseas Office'),
+            'address' => setting('footer_overseas_office_address'),
+        ],
+    ])->filter(fn ($office) => $office['address']);
 @endphp
 <footer class="main-footer-metal bg-section dark-section">
         <div class="container">
@@ -79,32 +89,25 @@
                         <!-- Footer Contact End -->
                         @endif
 
-                        <!-- Footer Links Start -->
-                        <div class="footer-links-metal footer-newsletter-form-metal">
-                            @if ($newsletter = setting('footer_newsletter_title'))
-                            <h3>{{ $newsletter }}</h3>
-                            <form id="newslettersForm" action="#" method="POST">
-                                <div class="form-group">
-                                    <input type="email" name="mail" class="form-control" id="mail" placeholder="Your Email" required>
-                                    <button type="submit" class="newsletter-btn"><img src="{{ asset('frontend/images/arrow-primary.svg') }}" alt=""></button>
-                                </div>
-                            </form>
-                            @endif
+                        @if ($offices->isNotEmpty())
+                        <!-- Footer Offices Start -->
+                        <div class="footer-links-metal footer-addresses-metal">
+                            <h3>{{ setting('footer_offices_title', 'Our Offices') }}</h3>
 
-                            @if ($address = setting('footer_address'))
-                            <!-- Footer Location Item Start -->
-                            <div class="footer-location-item-metal">
-                                <div class="icon-box">
-                                    <img src="{{ asset('frontend/images/icon-location-accent.svg') }}" alt="">
+                            @foreach ($offices as $office)
+                                <div class="footer-location-item-metal">
+                                    <div class="icon-box">
+                                        <img src="{{ asset('frontend/images/icon-location-accent.svg') }}" alt="">
+                                    </div>
+                                    <div class="footer-location-item-content-metal">
+                                        <h4>{{ $office['title'] }}</h4>
+                                        <p>{{ $office['address'] }}</p>
+                                    </div>
                                 </div>
-                                <div class="footer-location-item-content-metal">
-                                    <p>{{ $address }}</p>
-                                </div>
-                            </div>
-                            <!-- Footer Location Item End -->
-                            @endif
+                            @endforeach
                         </div>
-                        <!-- Footer Links End -->
+                        <!-- Footer Offices End -->
+                        @endif
                     </div>
                     <!-- Footer Links Box End -->
                 </div>

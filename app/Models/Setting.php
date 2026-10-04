@@ -42,10 +42,15 @@ class Setting extends Model
             'footer_phone' => ['label' => 'Phone', 'type' => 'text'],
             'footer_email_label' => ['label' => 'Email Label', 'type' => 'text'],
             'footer_email' => ['label' => 'Email', 'type' => 'email'],
-            'footer_address' => ['label' => 'Address', 'type' => 'text'],
         ],
-        'Footer Newsletter & Copyright' => [
-            'footer_newsletter_title' => ['label' => 'Newsletter Heading', 'type' => 'text', 'note' => 'Leave empty to hide the subscribe box.'],
+        'Footer Offices' => [
+            'footer_offices_title' => ['label' => 'Heading', 'type' => 'text'],
+            'footer_bd_office_title' => ['label' => 'Office 1 Title', 'type' => 'text'],
+            'footer_address' => ['label' => 'Office Address 1', 'type' => 'textarea'],
+            'footer_overseas_office_title' => ['label' => 'Office 2 Title', 'type' => 'text'],
+            'footer_overseas_office_address' => ['label' => 'Office Address 2', 'type' => 'textarea'],
+        ],
+        'Footer Copyright' => [
             'footer_copyright' => ['label' => 'Copyright Text', 'type' => 'text', 'note' => 'Use <code>{year}</code> for the current year.'],
         ],
     ];
