@@ -16,6 +16,17 @@
                     @method('PUT')
                     <div class="row g-4">
                         <div class="col-md-6">
+                            <label class="form-label" for="gallery_category_id">Category <span class="text-danger">*</span></label>
+                            <select class="form-select" id="gallery_category_id" name="gallery_category_id" required>
+                                <option value="">Select category</option>
+                                @foreach ($categories as $category)
+                                    <option value="{{ $category->id }}" @selected((int) old('gallery_category_id', $image->gallery_category_id) === $category->id)>
+                                        {{ $category->name }}{{ $category->is_favorite ? ' (Favorite)' : '' }}
+                                    </option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="col-md-6">
                             <label class="form-label" for="image">Replace Image</label>
                             <input type="file" class="form-control" id="image" name="image" accept="image/*">
                             <img src="{{ $image->image_url }}" alt="" class="rounded mt-2" style="height:90px">

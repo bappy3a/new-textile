@@ -9,9 +9,36 @@
                 <p>Manage gallery images. Turn on "Show on Home" to display an image on the home page.</p>
             </div>
             <div class="nk-block-head-content">
+                <a href="{{ route('gallery-categories.index') }}" class="btn btn-outline-primary me-1">
+                    <em class="icon ni ni-list"></em><span>Categories</span>
+                </a>
                 <a href="{{ route('gallery.create') }}" class="btn btn-primary">
                     <em class="icon ni ni-plus"></em><span>Add Images</span>
                 </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="nk-block">
+        <div class="card card-bordered">
+            <div class="card-inner">
+                <form action="{{ route('gallery.index') }}" method="GET" class="row g-3 align-items-end">
+                    <div class="col-md-5">
+                        <label class="form-label" for="category">Filter by Category</label>
+                        <select class="form-select" id="category" name="category">
+                            <option value="">All categories</option>
+                            @foreach ($categories as $category)
+                                <option value="{{ $category->id }}" @selected($selectedCategoryId === $category->id)>
+                                    {{ $category->name }}{{ $category->is_favorite ? ' (Favorite)' : '' }}
+                                </option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                        <button type="submit" class="btn btn-primary">Filter</button>
+                        <a href="{{ route('gallery.index') }}" class="btn btn-light">Reset</a>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
@@ -53,6 +80,7 @@
                                 <th>#</th>
                                 <th>Image</th>
                                 <th>Alt Text</th>
+                                <th>Category</th>
                                 <th>Order</th>
                                 <th>Status</th>
                                 <th>Home Page</th>
@@ -65,6 +93,12 @@
                                     <td>{{ $loop->iteration }}</td>
                                     <td><img src="{{ $image->image_url }}" alt="" width="90" class="rounded" style="height:55px;object-fit:cover"></td>
                                     <td>{{ $image->alt_text ?: '—' }}</td>
+                                    <td>
+                                        {{ $image->category?->name ?? 'Uncategorized' }}
+                                        @if ($image->category?->is_favorite)
+                                            <span class="badge bg-warning text-dark">Favorite</span>
+                                        @endif
+                                    </td>
                                     <td>{{ $image->sort_order }}</td>
                                     <td>
                                         <span class="badge bg-{{ $image->is_active ? 'success' : 'secondary' }}">
@@ -87,7 +121,7 @@
                                     </td>
                                 </tr>
                             @empty
-                                <tr><td colspan="7" class="text-center py-4">No images yet.</td></tr>
+                                <tr><td colspan="8" class="text-center py-4">No images found.</td></tr>
                             @endforelse
                         </tbody>
                     </table>

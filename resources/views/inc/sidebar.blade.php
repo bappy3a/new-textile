@@ -52,7 +52,7 @@
             @endif
         </a>
     </li>
-    <li class="nk-menu-item {{ areActiveRoutes(['gallery.index', 'gallery.create', 'gallery.edit']) }}">
+    <li class="nk-menu-item {{ areActiveRoutes(['gallery.index', 'gallery.create', 'gallery.edit', 'gallery-categories.index', 'gallery-categories.create', 'gallery-categories.edit']) }}">
         <a href="{{ route('gallery.index') }}" class="nk-menu-link">
             <span class="nk-menu-icon"><em class="icon ni ni-img-fill"></em></span>
             <span class="nk-menu-text">Products Gallery</span>

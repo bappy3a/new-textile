@@ -2,34 +2,51 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\GalleryCategory;
 use App\Models\GalleryImage;
 use App\Models\GallerySection;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\File;
+use Illuminate\Validation\Rule;
 use Illuminate\View\View;
 
 class GalleryController extends Controller
 {
     private const UPLOAD_DIR = 'uploads/gallery';
 
-    public function index(): View
+    public function index(Request $request): View
     {
+        $filter = $request->validate([
+            'category' => ['nullable', 'integer', Rule::exists('gallery_categories', 'id')],
+        ]);
+        $selectedCategoryId = isset($filter['category']) ? (int) $filter['category'] : null;
+
         return view('admin.gallery.index', [
-            'images' => GalleryImage::orderBy('sort_order')->orderBy('id')->get(),
+            'images' => GalleryImage::query()
+                ->with('category')
+                ->when($selectedCategoryId, fn (Builder $query): Builder => $query->where('gallery_category_id', $selectedCategoryId))
+                ->orderBy('sort_order')
+                ->orderBy('id')
+                ->get(),
+            'categories' => $this->categories(),
+            'selectedCategoryId' => $selectedCategoryId,
             'section' => GallerySection::first(),
         ]);
     }
 
     public function create(): View
     {
-        return view('admin.gallery.create');
+        return view('admin.gallery.create', ['categories' => $this->categories()]);
     }
 
     public function store(Request $request): RedirectResponse
     {
         $request->validate([
+            'gallery_category_id' => ['required', 'integer', Rule::exists('gallery_categories', 'id')],
             'images' => ['required', 'array', 'max:20'],
             'images.*' => ['image', 'mimes:jpg,jpeg,png,webp', 'max:4096'],
         ]);
@@ -37,6 +54,7 @@ class GalleryController extends Controller
         $order = (int) GalleryImage::max('sort_order');
         foreach ($request->file('images') as $file) {
             GalleryImage::create([
+                'gallery_category_id' => $request->integer('gallery_category_id'),
                 'image' => $this->upload($file),
                 'sort_order' => ++$order,
                 'is_active' => $request->boolean('is_active', true),
@@ -49,12 +67,16 @@ class GalleryController extends Controller
 
     public function edit(GalleryImage $gallery): View
     {
-        return view('admin.gallery.edit', ['image' => $gallery]);
+        return view('admin.gallery.edit', [
+            'image' => $gallery,
+            'categories' => $this->categories(),
+        ]);
     }
 
     public function update(Request $request, GalleryImage $gallery): RedirectResponse
     {
         $data = $request->validate([
+            'gallery_category_id' => ['required', 'integer', Rule::exists('gallery_categories', 'id')],
             'alt_text' => ['nullable', 'string', 'max:255'],
             'sort_order' => ['nullable', 'integer', 'min:0'],
             'image' => ['nullable', 'image', 'mimes:jpg,jpeg,png,webp', 'max:4096'],
@@ -102,6 +124,15 @@ class GalleryController extends Controller
         $file->move(public_path(self::UPLOAD_DIR), $name);
 
         return self::UPLOAD_DIR.'/'.$name;
+    }
+
+    /** @return Collection<int, GalleryCategory> */
+    private function categories(): Collection
+    {
+        return GalleryCategory::query()
+            ->orderByDesc('is_favorite')
+            ->orderBy('name')
+            ->get();
     }
 
     /** Only remove files we uploaded, never the theme's bundled images. */

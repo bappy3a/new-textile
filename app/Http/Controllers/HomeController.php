@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\AboutPageSection;
 use App\Models\AboutUs;
 use App\Models\ContactInfo;
+use App\Models\GalleryCategory;
 use App\Models\GalleryImage;
 use App\Models\GallerySection;
 use App\Models\HeroInfo;
@@ -14,6 +15,9 @@ use App\Models\Slider;
 use App\Models\WhyChooseItem;
 use App\Models\WhyChooseSection;
 use Illuminate\Contracts\Support\Renderable;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 class HomeController extends Controller
 {
@@ -47,11 +51,22 @@ class HomeController extends Controller
         return view('about-us', compact('sections'));
     }
 
-    public function products()
+    public function products(Request $request): View
     {
-        $galleryImages = GalleryImage::active()->orderBy('sort_order', 'desc')->get();
+        $selectedCategory = $request->filled('category')
+            ? GalleryCategory::query()->findOrFail($request->integer('category'))
+            : null;
 
-        return view('products', compact('galleryImages'));
+        $galleryImages = GalleryImage::query()
+            ->active()
+            ->when(
+                $selectedCategory,
+                fn (Builder $query): Builder => $query->whereBelongsTo($selectedCategory, 'category'),
+            )
+            ->paginate(9)
+            ->withQueryString();
+
+        return view('products', compact('galleryImages', 'selectedCategory'));
     }
 
     public function contactUs()
