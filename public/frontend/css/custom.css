@@ -3245,7 +3245,7 @@ header.main-header .header-sticky.active{
 	background: url('../images/page-header-bg.jpg') no-repeat;
 	background-position: center center;
 	background-size: cover;
-	padding: 280px 0 165px;
+	padding: 70px 0;
 	margin-top: 20px;
 	overflow: hidden;
 }
@@ -3275,12 +3275,12 @@ header.main-header .header-sticky.active{
 
 .page-header-box h1{
 	display: inline-block;
-	font-size: 60px;
+	font-size: 44px;
     font-weight: 600;
 	line-height: 1.1em;
 	letter-spacing: -0.02em;
 	color: var(--white-color);
-	margin-bottom: 15px;
+	margin-bottom: 8px;
 	cursor: none;
 }
 
@@ -6714,13 +6714,13 @@ header.main-header .header-sticky.active{
 	}
 
 	.page-header{
-		padding: 170px 0 80px;
+		padding: 50px 0;
 		margin-top: 0;
 	}
 
 	.page-header-box h1{
-		font-size: 44px;
-		margin-bottom: 10px;
+		font-size: 34px;
+		margin-bottom: 6px;
 	}
 
 	.our-approach{

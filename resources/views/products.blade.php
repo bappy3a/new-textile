@@ -49,16 +49,19 @@
                         <p>No products found in this category.</p>
                     </div>
                 @endforelse
+            </div>
+            <!-- gallery section end -->
 
-                @if ($galleryImages->hasPages())
+            {{-- Kept outside .gallery-items so the lightbox doesn't treat page links as images --}}
+            @if ($galleryImages->hasPages())
+                <div class="row">
                     <div class="col-lg-12">
                         <div class="page-pagination wow fadeInUp">
                             {{ $galleryImages->onEachSide(1)->links('pagination::bootstrap-5') }}
                         </div>
                     </div>
-                @endif
-            </div>
-            <!-- gallery section end -->
+                </div>
+            @endif
         </div>
     </div>
     <!-- Photo Gallery End -->

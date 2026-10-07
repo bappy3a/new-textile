@@ -24,7 +24,7 @@ class AppServiceProvider extends ServiceProvider
     {
         View::composer('layouts.header', function (ViewInstance $view): void {
             $view->with('productMenuCategories', GalleryCategory::query()
-                ->where('is_favorite', true)
+                // ->where('is_favorite', true)
                 ->orderBy('name')
                 ->orderBy('id')
                 ->get(['id', 'name']));
