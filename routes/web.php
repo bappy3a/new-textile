@@ -3,6 +3,7 @@
 use App\Http\Controllers\CompanyProfileController;
 use App\Http\Controllers\ContactMessageController;
 use App\Http\Controllers\HomeController;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -25,3 +26,9 @@ Route::get('/clier', function () {
     Artisan::call('route:clear');
     Artisan::call('view:clear');
 })->name('clier');
+
+Route::get('/storage-link', function (): Response {
+    Artisan::call('storage:link');
+
+    return response(Artisan::output(), 200, ['Content-Type' => 'text/plain']);
+})->middleware('auth')->name('storage.link');
