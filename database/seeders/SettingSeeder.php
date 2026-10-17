@@ -32,6 +32,8 @@ class SettingSeeder extends Seeder
             'footer_address' => 'Dhaka, Bangladesh',
             'footer_overseas_office_title' => 'Overseas Office',
             'footer_overseas_office_address' => null,
+            'footer_office3_title' => 'Office 3',
+            'footer_office3_address' => null,
             'footer_copyright' => 'Copyright © {year} All Rights Reserved.',
         ];
 

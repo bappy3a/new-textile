@@ -13,6 +13,10 @@
             'title' => setting('footer_overseas_office_title', 'Overseas Office'),
             'address' => setting('footer_overseas_office_address'),
         ],
+        [
+            'title' => setting('footer_office3_title', 'Office 3'),
+            'address' => setting('footer_office3_address'),
+        ],
     ])->filter(fn ($office) => $office['address']);
 @endphp
 <footer class="main-footer-metal bg-section dark-section">

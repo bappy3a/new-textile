@@ -21,7 +21,10 @@
                         <div class="row g-4">
                             @foreach ($fields as $key => $field)
                                 @php($value = old($key, $values[$key] ?? null))
-                                <div class="{{ in_array($field['type'], ['textarea', 'links']) ? 'col-12' : 'col-md-4' }}">
+                                @isset($field['section'])
+                                    <div class="col-12 {{ $loop->first ? '' : 'mt-3' }}"><h6 class="overline-title text-primary border-top pt-3">{{ $field['section'] }}</h6></div>
+                                @endisset
+                                <div class="{{ $field['col'] ?? (in_array($field['type'], ['textarea', 'links']) ? 'col-12' : 'col-md-4') }}">
                                     <label class="form-label" for="{{ $key }}">
                                         @isset($field['icon'])<i class="fa-brands {{ $field['icon'] }} me-1"></i>@endisset
                                         {{ $field['label'] }}

@@ -47,11 +47,13 @@ class Setting extends Model
             'footer_email' => ['label' => 'Email', 'type' => 'email'],
         ],
         'Footer Offices' => [
-            'footer_offices_title' => ['label' => 'Heading', 'type' => 'text'],
-            'footer_bd_office_title' => ['label' => 'Office 1 Title', 'type' => 'text'],
-            'footer_address' => ['label' => 'Office Address 1', 'type' => 'textarea'],
-            'footer_overseas_office_title' => ['label' => 'Office 2 Title', 'type' => 'text'],
-            'footer_overseas_office_address' => ['label' => 'Office Address 2', 'type' => 'textarea'],
+            'footer_offices_title' => ['label' => 'Section Heading', 'type' => 'text', 'note' => 'Shown above the office list in the footer.'],
+            'footer_bd_office_title' => ['label' => 'Office Name', 'type' => 'text', 'section' => 'Office 1', 'col' => 'col-md-4'],
+            'footer_address' => ['label' => 'Address', 'type' => 'textarea', 'col' => 'col-md-8'],
+            'footer_overseas_office_title' => ['label' => 'Office Name', 'type' => 'text', 'section' => 'Office 2', 'col' => 'col-md-4'],
+            'footer_overseas_office_address' => ['label' => 'Address', 'type' => 'textarea', 'col' => 'col-md-8', 'note' => 'Leave the address empty to hide this office.'],
+            'footer_office3_title' => ['label' => 'Office Name', 'type' => 'text', 'section' => 'Office 3', 'col' => 'col-md-4'],
+            'footer_office3_address' => ['label' => 'Address', 'type' => 'textarea', 'col' => 'col-md-8', 'note' => 'Leave the address empty to hide this office.'],
         ],
         'Footer Copyright' => [
             'footer_copyright' => ['label' => 'Copyright Text', 'type' => 'text', 'note' => 'Use <code>{year}</code> for the current year.'],
