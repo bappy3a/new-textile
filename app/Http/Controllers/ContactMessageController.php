@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\ContactMessageReceived;
 use App\Models\ContactMessage;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\View\View;
 
 class ContactMessageController extends Controller
@@ -21,7 +23,7 @@ class ContactMessageController extends Controller
             'message' => ['nullable', 'string', 'max:5000'],
         ]);
 
-        ContactMessage::create([
+        $contactMessage = ContactMessage::create([
             'first_name' => $data['fname'],
             'last_name' => $data['lname'] ?? null,
             'phone' => $data['phone'],
@@ -29,6 +31,8 @@ class ContactMessageController extends Controller
             'message' => $data['message'] ?? null,
             'ip_address' => $request->ip(),
         ]);
+
+        Mail::to('info@universalclothingbd.com')->send(new ContactMessageReceived($contactMessage));
 
         $success = 'Message Sent Successfully!';
 
