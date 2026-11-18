@@ -328,8 +328,17 @@
 	});
 
 	function submitForm(){
+		if ($contactform.data('submitting')) {
+			return;
+		}
+
 		/* Ajax call to submit form */
-		var $button = $contactform.find('button[type="submit"]').prop('disabled', true);
+		var $button = $contactform.find('button[type="submit"]');
+		var buttonContent = $button.html();
+		$contactform.data('submitting', true).attr('aria-busy', 'true');
+		$button.prop('disabled', true).attr('aria-busy', 'true')
+			.html('<span role="status"><span class="spinner-border spinner-border-sm me-2" aria-hidden="true"></span>Sending...</span>');
+		$("#msgSubmit").empty();
 		$.ajax({
 			type: "POST",
 			url: $contactform.attr('action'),
@@ -346,7 +355,8 @@
 				submitMSG(false, msg);
 			},
 			complete : function(){
-				$button.prop('disabled', false);
+				$contactform.data('submitting', false).removeAttr('aria-busy');
+				$button.prop('disabled', false).removeAttr('aria-busy').html(buttonContent);
 			}
 		});
 	}
